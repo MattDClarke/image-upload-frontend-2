@@ -78,8 +78,7 @@ function App() {
           : null}
       </code>
       {file && (
-        <>
-          <button onClick={handleUpload} className="btn-green">
+          <button onClick={handleUpload} className="btn-green" disabled={loading}>
             {loading ? "uploading..." : "upload to cloudinary"}
           </button>
         </>
