@@ -39,11 +39,12 @@ function App() {
       const data = new FormData();
       const response = await fetch(`${import.meta.env.VITE_API_URL}/upload`, {
         method: "POST",
-        body: data,
-      });
       if (!response.ok) {
-        notify(`Upload failed: ${response.status} ${response.statusText}`);
-        throw new Error(`Upload failed: ${response.status} ${response.statusText}`);
+        const errorMessage = `Upload failed: ${response.status} ${response.statusText}`;
+        notify(errorMessage);
+        setRes({});
+        throw new Error(errorMessage);
+      }
       const json = await response.json();
       setRes(json);
       setFile(null);
