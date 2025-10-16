@@ -43,9 +43,12 @@ function App() {
       if (!response.ok) {
         notify(`Upload failed: ${response.status} ${response.statusText}`);
         throw new Error(`Upload failed: ${response.status} ${response.statusText}`);
-      }
       const json = await response.json();
       setRes(json);
+      setFile(null);
+      // Reset file input
+      const fileInput = document.getElementById('file');
+      if (fileInput) fileInput.value = '';
     } catch (error) {
       notify(error.message);
     } finally {
