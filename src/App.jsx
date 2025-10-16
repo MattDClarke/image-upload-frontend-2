@@ -13,8 +13,10 @@ function App() {
     const selectedFile = e.target.files && e.target.files[0];
     if (!selectedFile) return;
 
-    const maxSize = 20 * 1024 * 1024; // 20MB
     const isImage = selectedFile.type && selectedFile.type.startsWith("image/");
+    const validExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg'];
+    const fileExtension = selectedFile.name.toLowerCase().match(/\.[^.]*$/);
+    const hasValidExtension = fileExtension && validExtensions.includes(fileExtension[0]);
     if (!isImage) {
       notify("Please select an image file");
       e.target.value = "";
