@@ -73,11 +73,14 @@ function App() {
         {" "}
         select file
       </label>
-      {file && <center> {file.name}</center>}
       <input
         id="file"
         type="file"
         onChange={handleSelectFile}
+        multiple={false}
+        accept="image/*"
+        aria-label="Select an image file to upload"
+      />
         multiple={false}
       />
       <code>
