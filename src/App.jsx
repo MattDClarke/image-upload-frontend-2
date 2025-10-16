@@ -57,7 +57,11 @@ function App() {
       if (fileInput) fileInput.value = '';
       notify('Upload successful!');
     } catch (error) {
-      notify(error.message);
+      const userMessage = error.message.includes('Failed to fetch') 
+        ? 'Network error. Please check your connection and try again.' 
+        : error.message;
+      notify(userMessage);
+    } finally {
     } finally {
       setLoading(false);
     }
