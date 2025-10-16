@@ -36,26 +36,32 @@ function App() {
   const handleUpload = async () => {
     try {
       setLoading(true);
+  const handleUpload = async () => {
+    try {
+      setLoading(true);
       const data = new FormData();
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/upload`, {
+      data.append("my_file", file);
+      const response = await fetch("http://localhost:3000/upload", {
         method: "POST",
+        body: data,
+      });
       if (!response.ok) {
-        const errorMessage = `Upload failed: ${response.status} ${response.statusText}`;
-        notify(errorMessage);
-        setRes({});
-        throw new Error(errorMessage);
+        notify(`Upload failed: ${response.status} ${response.statusText}`);
+        throw new Error(`Upload failed: ${response.status} ${response.statusText}`);
       }
       const json = await response.json();
       setRes(json);
+      // Reset file input after successful upload
       setFile(null);
-      // Reset file input
       const fileInput = document.getElementById('file');
       if (fileInput) fileInput.value = '';
+      notify('Upload successful!');
     } catch (error) {
       notify(error.message);
     } finally {
       setLoading(false);
     }
+  };
   };
   return (
     <div className="App">
