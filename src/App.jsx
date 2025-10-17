@@ -50,7 +50,7 @@ function App() {
     setFile(selectedFile);
   };
 
-  const handleUpload = useCallback(async () => {
+const handleUpload = useCallback(async () => {
     if (!file || loading) return;
     try {
       setLoading(true);
@@ -59,7 +59,7 @@ function App() {
       const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
       const response = await fetch(`${API_URL}/upload`, {
         method: "POST",
-        body: data,
+      body: data,
       });
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
@@ -79,6 +79,7 @@ function App() {
     } finally {
       setLoading(false);
     }
+  }, [file]); // Remove 'loading' from dependencies
   }, [file, loading]);
 
   return (
