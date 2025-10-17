@@ -55,14 +55,15 @@ export const useConversionRate = () => {
         setError(errorMessage);
         toast.error(errorMessage);
 
-        // Report API error to Sentry with the actual error message
-        Sentry.captureException(new Error(errorMessage), {
-          level: 'error',
+        // Report API error to Sentry with context
+        Sentry.captureException(new Error(`API Error: ${response.status} ${response.statusText}`), {
+          level: 'warning',
           tags: {
             errorType: 'api_error',
             statusCode: response.status,
           },
           extra: {
+            apiMessage: data.message,
             statusCode: response.status,
             statusText: response.statusText,
             requestBody: { conversions, visitors },
