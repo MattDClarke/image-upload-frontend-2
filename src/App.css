@@ -40,3 +40,104 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Form group styles */
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.form-group input[aria-invalid="true"] {
+  border-color: #dc3545;
+  background-color: #fff5f5;
+}
+
+.form-group input:focus {
+  outline: 2px solid #646cff;
+  outline-offset: 2px;
+}
+
+.form-group input[aria-invalid="true"]:focus {
+  outline-color: #dc3545;
+}
+
+/* Error message styles */
+.error-message {
+  display: block;
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+/* Result styles */
+.result {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.result.success {
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+}
+
+.result.error {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+}
+
+.result h3 {
+  margin-top: 0;
+}
+
+.result dl {
+  margin: 0;
+}
+
+.result dt {
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.result dd {
+  margin: 0 0 0 1rem;
+}
+
+/* Button styles */
+button {
+  margin-right: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button:focus-visible {
+  outline: 2px solid #646cff;
+  outline-offset: 2px;
+}
