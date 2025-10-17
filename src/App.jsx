@@ -96,11 +96,17 @@ const handleUpload = useCallback(async () => {
         accept="image/*"
         aria-label="Select an image file to upload"
         ref={fileInputRef}
-      />
       {file && (
+        <div>
+          <p>Selected file: {file.name} ({(file.size / (1024 * 1024)).toFixed(2)} MB)</p>
           <button onClick={handleUpload} className="btn-green" disabled={loading}>
             {loading ? "uploading..." : "upload to cloudinary"}
           </button>
+          <button onClick={resetFileInput} className="btn-grey" disabled={loading}>
+            clear
+          </button>
+        </div>
+      )}
       )}
       <ToastContainer />
     </div>
